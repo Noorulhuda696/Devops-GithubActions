@@ -17,7 +17,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t devopsmolvi/webimages:$IMAGE_VERSION .
+          docker build -t noorulhuda696/mydevoprepository:$IMAGE_VERSION .
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -27,11 +27,11 @@ jobs:
 
       - name: Push Image to Docker Hub
         run: |
-          docker push devopsmolvi/webimages:$IMAGE_VERSION
+          docker push noorulhuda696/mydevoprepository:$IMAGE_VERSION
 
       - name: Deploy Container
         run: |
-          docker pull devopsmolvi/webimages:$IMAGE_VERSION
+          docker pull noorulhuda696/mydevoprepository:$IMAGE_VERSION
 
           docker stop webserver || true
           docker rm webserver || true
@@ -40,4 +40,4 @@ jobs:
             --name webserver \
             --restart unless-stopped \
             -p 8080:8080 \
-            devopsmolvi/webimages:$IMAGE_VERSION
+            noorulhuda696/mydevoprepository:$IMAGE_VERSION
